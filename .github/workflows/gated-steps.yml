@@ -1,0 +1,14 @@
+name: gated-steps
+on:
+  workflow_dispatch
+jobs:
+  everywhere:
+    if: github.ref_name == 'dev'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "I'm on the ${{ github.ref_name }} branch"
+  only-on-dev:
+    if: github.ref_name == 'dev'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "I'm on the dev branch"
