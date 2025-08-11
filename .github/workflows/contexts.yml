@@ -1,6 +1,10 @@
 name: Context testing
 on: [workflow_dispatch]
 
+env:
+  name: Trevor
+  course: AZ-2006
+
 jobs:
   dump_contexts_to_log:
     runs-on: ubuntu-latest
@@ -29,3 +33,7 @@ jobs:
         env:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
+      - name: Dump env context
+        env:
+          ENV_CONTEXT: ${{ toJson(env) }}
+        run: echo "$ENV_CONTEXT"
